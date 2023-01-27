@@ -156,17 +156,17 @@ legend('Distribution', 'Smoothed density',...
 hold off;
 %
 
-%% Question 1 e) polynomial fitting a line between `lwklywge` and `educ`
+%% Question 1 e) polynomial fitting a line between Conditional Mean of `lwklywge` and `educ`
 
 
 % Fit the polynomial of degree one
-p = polyfit(dt1.educ, dt1.lwklywge, 1);
+p = polyfit(educ_groups, cmeans, 1);
 
 % Get the coefficients of the polynomial
 coefs = p;
 
 % Generate the fitted values for the independent variable
-y_fit = polyval(p,dt1.educ);
+y_fit = polyval(p,educ_groups);
 
 % Plot the data and the fitted line
 figure(4);
@@ -174,7 +174,7 @@ fig1_comps.fig = gcf;
 grid on;
 hold on;
 
-fig4_comps.p1 = plot(dt1.educ, y_fit);
+fig4_comps.p1 = plot(educ_groups, y_fit);
 fig4_comps.p2 = plot(educ_groups, cmeans);
 
 set(fig4_comps.p1, 'Color', PS.Blue5, ...
